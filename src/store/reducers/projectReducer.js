@@ -1,3 +1,5 @@
+import { CREATE_PROJECT } from '../types'
+
 const initialState = {
   projects: [
     {id: 1, title: 'help me find peach', content: 'blah blah blah'},
@@ -7,6 +9,13 @@ const initialState = {
 };
 
 const projectReducer = (state = initialState, action) => {
+
+  switch (action.type){
+    case CREATE_PROJECT: {
+      console.log('projectReducer CREATE_PROJECT => ', action.payload)
+    }
+  }
+
   return state;
 }
 
