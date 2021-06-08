@@ -13,8 +13,10 @@ import reportWebVitals from './reportWebVitals';
 import firebase from 'firebase/app'
 import {
   ReactReduxFirebaseProvider,
+  getFirebase
 } from 'react-redux-firebase'
-import { createFirestoreInstance } from 'redux-firestore'
+
+import { createFirestoreInstance, getFirestore } from 'redux-firestore'
 
 // react-redux-firebase config
 // const rrfConfig = {
@@ -22,7 +24,7 @@ import { createFirestoreInstance } from 'redux-firestore'
 //   useFirestoreForProfile: true
 // }
 
-const store = createStore(rootReducer, applyMiddleware(thunk))
+const store = createStore(rootReducer, applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})))
 
 const rrfProps = {
   firebase,
