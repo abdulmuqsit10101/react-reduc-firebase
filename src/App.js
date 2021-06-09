@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Switch, Route} from "react-router-dom";
+import {BrowserRouter, Switch, Route, Redirect} from "react-router-dom";
 import Navbar from './components/layouts/Navbar';
 import Dashboard from './components/dashboard/Dashboard';
 import ProjectDetails from './components/projects/ProjectDetails';
@@ -13,7 +13,10 @@ function App() {
       <div className="App">
         <Navbar/>
         <Switch>
-          <Route exact path='/' component={Dashboard}/>
+          <Route exact path='/'>
+            <Redirect to="/projects" />
+          </Route>
+          <Route exact path='/projects' component={Dashboard} />
           <Route path='/project/:id' component={ProjectDetails}/>
           <Route path='/signin' component={SignIn}/>
           <Route path='/signup' component={SignUp}/>
