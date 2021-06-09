@@ -4,9 +4,7 @@ import './index.css';
 import App from './App';
 import rootReducer from './store/reducers/rootReducer.js';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-// import { reduxFirestore, getFirestore } from 'redux-firestore';
-// import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
+import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import fbConfig from './config/fbConfig';
 import reportWebVitals from './reportWebVitals';
@@ -18,20 +16,13 @@ import {
 
 import { createFirestoreInstance, getFirestore } from 'redux-firestore'
 
-// react-redux-firebase config
-// const rrfConfig = {
-//   userProfile: 'users',
-//   useFirestoreForProfile: true
-// }
-
 const store = createStore(rootReducer, applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})))
 
 const rrfProps = {
   firebase,
   config: fbConfig,
   dispatch: store.dispatch,
-  createFirestoreInstance
-  // createFirestoreInstance // <- needed if using firestore
+  createFirestoreInstance // <- only needed if using firestore
 }
 
 ReactDOM.render(
