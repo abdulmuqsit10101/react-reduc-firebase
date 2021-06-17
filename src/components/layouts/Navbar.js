@@ -18,7 +18,7 @@ const Navbar = ({ isSignedIn }) => {
 const mapStateToProps = (states) => {
   console.log('states => ', states);
   return {
-    isSignedIn: !states.firebase.auth.isEmpty
+    isSignedIn: states.firebase.auth.uid
   }
 }
 
