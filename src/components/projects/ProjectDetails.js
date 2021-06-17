@@ -3,10 +3,13 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import Loader from "../loader/Loader";
+import {getMonthByName} from '../../utils';
 
 const ProjectDetails = ({project}) => {
   if(project){
-    const { title, content, authorFirstName, authorLastName } = project;
+    const { title, content, authorFirstName, authorLastName, createdAd } = project;
+    const date = createdAd && new Date(createdAd.seconds);
+    console.log('date => ', date);
     return (
       <div className="container section project-details">
         <div className="card z-depth-0">
@@ -16,7 +19,10 @@ const ProjectDetails = ({project}) => {
           </div>
           <div className="card-action grey lighten-4 grey-text">
             <div>Posted by The {authorFirstName + ' ' + authorLastName}</div>
-            <div>2nd September, 2am</div>
+            {date && <div>{date.getDay()} {getMonthByName({
+              month: date.getMonth(),
+              isFullName: true
+            })}, {date.getHours()}:00</div>}
           </div>
         </div>
       </div>
