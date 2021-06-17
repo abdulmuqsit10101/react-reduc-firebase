@@ -1,2 +1,8 @@
+// For Projects
 export const CREATE_PROJECT = "CREATE_PROJECT"
 export const CREATE_PROJECT_ERROR = "CREATE_PROJECT_ERROR"
+
+// For Auth
+export const SIGN_IN_SUCCESS = "SIGN_IN_SUCCESS"
+export const SIGN_IN_FAILURE = "SIGN_IN_FAILURE"
+export const SIGN_OUT_SUCCESS = "SIGN_OUT_SUCCESS"
