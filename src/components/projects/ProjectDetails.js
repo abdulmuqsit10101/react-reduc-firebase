@@ -4,6 +4,7 @@ import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import Loader from "../loader/Loader";
 import {getMonthByName} from '../../utils';
+import {useParams} from 'react-router-dom';
 
 const ProjectDetails = ({project}) => {
   if(project){
@@ -35,6 +36,7 @@ const ProjectDetails = ({project}) => {
 }
 
 const mapStateToProps = ({ firestore: { data } }, ownProps) => {
+  console.log('ownProps => ', ownProps)
   const id = ownProps.match.params.id;
   const projects = data && data.projects;
   const project = projects ? projects[id] : null;
